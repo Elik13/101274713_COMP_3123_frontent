@@ -35,6 +35,11 @@ const App = () => {
     setReloadRequired(true);
   }
   
+  async function deleteUser(id) {
+    await employeeService.remove(id);
+    setReloadRequired(true);
+  }
+  
   return (
     <div className="container">
       <h1>Employee management system</h1>
@@ -46,7 +51,7 @@ const App = () => {
         </div>
         <div className="flex-large">
           <h2>View Employee</h2>
-          {isLoading ? <div>Loading</div> : <EmployeeTable employees={employees}/>}
+          {isLoading ? <div>Loading</div> : <EmployeeTable employees={employees} deleteUser={deleteUser}/>}
         </div>
       </div>
     </div>

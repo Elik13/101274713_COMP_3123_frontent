@@ -18,6 +18,14 @@ class EmployeeService {
       console.error('Failed to create new employee', e);
     }
   }
+  
+  async remove(id)  {
+    try {
+      await axios.delete(`/employees/${id}`);
+    } catch (e) {
+      console.error(`Failed to remove user with ID: ${id}`, e);
+    }
+  }
 }
 
 module.exports = EmployeeService;

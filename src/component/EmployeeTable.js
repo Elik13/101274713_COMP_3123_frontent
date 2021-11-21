@@ -19,8 +19,8 @@ const EmployeeTable = (props) => (
           <td>{employee.lastName}</td>
           <td>{employee.emailId}</td>
           <td>
-            <button className="button muted-button">Edit</button>
-            <button className="button muted-button">Delete</button>
+            <button className="button muted-button" >Edit</button>
+            <button className="button muted-button" onClick={() => props.deleteUser(employee.id)}>Delete</button>
           </td>
         </tr>
       ))) : (

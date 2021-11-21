@@ -2,14 +2,14 @@ import React, {useState} from 'react'
 
 const AddEmployeeForm = (props) => {
   // configuring the initial value to make sure the form is reset after the revisit
-  const initialState = {id: null, firstName: '', lastName: '', email: ''};
+  const initialState = {id: '', firstName: '', lastName: '', email: ''};
   const [employee, setEmployee] = useState(initialState);
   const handleInputChange = (event) => {
     const {name, value} = event.target
     setEmployee({...employee, [name]: value})
   }
   
-  function submit(event) {
+  const submit = (event) => {
     event.preventDefault();
     if (!employee.id || !employee.firstName || !employee.lastName || !employee.email) {
       console.warn('Invalid user input');
