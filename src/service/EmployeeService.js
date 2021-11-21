@@ -19,11 +19,19 @@ class EmployeeService {
     }
   }
   
-  async remove(id)  {
+  async remove(id) {
     try {
       await axios.delete(`/employees/${id}`);
     } catch (e) {
       console.error(`Failed to remove user with ID: ${id}`, e);
+    }
+  }
+  
+  async modify(employee) {
+    try {
+      await axios.put(`/employees/${employee.id}`, {...employee})
+    } catch (e) {
+      console.error(`Failed to remove user with ID: ${employee.id}`, e);
     }
   }
 }
