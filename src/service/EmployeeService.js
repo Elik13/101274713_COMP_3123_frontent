@@ -1,14 +1,21 @@
 const axios = require("axios");
 
-const host = 'http://localhost:8081/api/v1';
-
 class EmployeeService {
-  async getAllEmployees() {
+  async getAll() {
     try {
-      let axiosResponse = await axios.get(`${host}/employees`);
+      let axiosResponse = await axios.get(`/employees`);
       return axiosResponse.data;
     } catch (e) {
       console.error('Failed to get all the employes', e);
+    }
+  }
+  
+  async add(employee) {
+    try {
+      await axios.post(`/employees`,
+        {...employee});
+    } catch (e) {
+      console.error('Failed to create new employee', e);
     }
   }
 }
