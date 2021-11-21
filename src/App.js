@@ -1,25 +1,39 @@
-import logo from './logo.svg';
 import './App.css';
+import EmployeeTable from "./component/EmployeeTable";
+import {useEffect, useState} from "react";
+import EmployeeService from './service/EmployeeService';
 
-function App() {
+const employeeService = new EmployeeService();
+
+// NOTE: functional component cannot be async
+const App = () => {
+  const [isLoading, setIsLoading] = useState(false)
+  const [employees, setEmployees] = useState([]);
+  
+  useEffect(() => {
+    // use inner function to avoid async on the useEffect level
+    const fetchData = async () => {
+      setIsLoading(true);
+      let result = await employeeService.getAllEmployees();
+      setEmployees(result);
+      setIsLoading(false);
+    };
+    fetchData();
+  }, []);
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <h1>Employee management system</h1>
+      <div className="flex-row">
+        <div className="flex-large">
+          <h2>New Employee</h2>
+        </div>
+        <div className="flex-large">
+          <h2>View Employee</h2>
+          {isLoading ? <div>Loading</div> : <EmployeeTable employees={employees}/>}
+        </div>
+      </div>
     </div>
-  );
+  )
 }
-
 export default App;
