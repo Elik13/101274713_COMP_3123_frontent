@@ -14,7 +14,7 @@ const App = () => {
   const [reloadRequired, setReloadRequired] = useState(false);
   const [editing, setEditing] = useState(false)
   const initialState = {id: '', firstName: '', lastName: '', emailId: ''};
-  const [currentEmployee, setCurrentUser] = useState(initialState)
+  const [currentEmployee, setCurrentEmployee] = useState(initialState)
   
   useEffect(() => {
     // use inner function to avoid async on the useEffect level
@@ -45,7 +45,7 @@ const App = () => {
   }
   
   const editEmployeeButtonAction = (employee) => {
-    setCurrentUser(employee);
+    setCurrentEmployee(employee);
     setEditing(true);
   }
   

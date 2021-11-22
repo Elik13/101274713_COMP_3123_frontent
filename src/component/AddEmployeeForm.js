@@ -12,7 +12,7 @@ const AddEmployeeForm = (props) => {
   const submit = (event) => {
     event.preventDefault();
     if (!employee.id || !employee.firstName || !employee.lastName || !employee.email) {
-      console.warn('Invalid user input');
+      console.warn('Invalid employee input');
       return;
     }
     props.addEmployee(employee)

@@ -23,7 +23,7 @@ class EmployeeService {
     try {
       await axios.delete(`/employees/${id}`);
     } catch (e) {
-      console.error(`Failed to remove user with ID: ${id}`, e);
+      console.error(`Failed to remove employee with ID: ${id}`, e);
     }
   }
   
@@ -31,7 +31,7 @@ class EmployeeService {
     try {
       await axios.put(`/employees/${employee.id}`, {...employee})
     } catch (e) {
-      console.error(`Failed to remove user with ID: ${employee.id}`, e);
+      console.error(`Failed to remove employee with ID: ${employee.id}`, e);
     }
   }
 }
